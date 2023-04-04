@@ -2,8 +2,13 @@
 
 .footer {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
+  gap: 10px;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 
   svg {
     color: $textColor;
@@ -15,6 +20,13 @@
       color: $primaryColorLight;
     }
   }
+}
+
+.note {
+  margin: 0;
+  font-size: $fontSizeExtraSmall;
+  color: $textColorLight;
+  text-align: center;
 }
 
 .copyright {

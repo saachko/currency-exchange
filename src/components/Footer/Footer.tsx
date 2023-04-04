@@ -7,6 +7,9 @@ import styles from './Footer.module.scss';
 function Footer() {
   return (
     <footer className={styles.footer}>
+      <p className={styles.note}>
+        *в приложении используются курсы валют, устанавливаемые ежедневно НБ РБ.
+      </p>
       <div>
         <div className="d-flex gap-2 justify-content-center">
           {authorsContacts.map((contact) => (
