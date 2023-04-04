@@ -6,6 +6,7 @@ import Header from 'components/Header/Header';
 import Loader from 'components/Loader/Loader';
 
 import getCurrencies from 'utils/api';
+import { currencyBYN } from 'utils/constants';
 
 import CurrencyContext from 'contexts/CurrencyContext';
 
@@ -29,7 +30,7 @@ function App() {
   useEffect(() => {
     (async () => {
       const currencies = await getCurrencies();
-      setAllCurrencies(currencies);
+      setAllCurrencies([currencyBYN, ...currencies]);
     })();
   }, []);
 

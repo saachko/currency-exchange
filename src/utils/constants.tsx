@@ -1,8 +1,9 @@
 import React from 'react';
 import { AiFillGithub, AiFillLinkedin, AiTwotoneMail } from 'react-icons/ai';
 import { FaTelegramPlane } from 'react-icons/fa';
+import { GroupBase, StylesConfig } from 'react-select';
 
-import { Contact, NavLink } from 'ts/interfaces';
+import { Contact, Currency, NavLink, SelectOption } from 'ts/interfaces';
 
 const navLinks: NavLink[] = [
   {
@@ -44,4 +45,37 @@ const authorsContacts: Contact[] = [
   },
 ];
 
-export { navLinks, authorsContacts };
+const currencyBYN: Currency = {
+  Cur_ID: 933,
+  Date: `${new Date()}`,
+  Cur_Abbreviation: 'BYN',
+  Cur_Scale: 1,
+  Cur_Name: 'Белорусский рубль',
+  Cur_OfficialRate: 1,
+};
+
+const selectStyles: StylesConfig<
+  string | SelectOption,
+  boolean,
+  GroupBase<SelectOption>
+> = {
+  control: (base, { isFocused }) => ({
+    ...base,
+    border: isFocused ? `1px solid #4b7325` : ``,
+    boxShadow: isFocused ? '0 0 0 0.25rem #91b3688d' : '',
+    '&:hover': {
+      border: isFocused ? `1px solid #4b7325` : ``,
+    },
+  }),
+  option: (base, { isFocused, isSelected }) => ({
+    ...base,
+    backgroundColor: isSelected ? '#91b3688d' : '',
+    transition: 'all 0.2s ease-out',
+    cursor: 'pointer',
+    '&:hover': {
+      backgroundColor: isFocused ? '#dad9d6' : '',
+    },
+  }),
+};
+
+export { navLinks, authorsContacts, currencyBYN, selectStyles };

@@ -1,1 +1,18 @@
 @import './variables.scss';
+@import './react-select.scss';
+
+.form-control:focus,
+.btn-close:focus,
+.btn-close:active {
+  border-color: $primaryColor;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem $primaryColorBoxShadow;
+}
+
+.form-control {
+  width: 150px;
+
+  @media (max-width: 360px) {
+    width: 290px;
+  }
+}

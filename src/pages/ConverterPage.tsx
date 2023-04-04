@@ -1,11 +1,13 @@
-import React, { memo, useContext } from 'react';
+import React, { memo } from 'react';
 
-import CurrencyContext from 'contexts/CurrencyContext';
+import CurrencyExchange from 'components/CurrencyExchange/CurrencyExchange';
 
 function ConverterPage() {
-  const { allCurrencies } = useContext(CurrencyContext);
-
-  return <main>ConverterPage</main>;
+  return (
+    <main>
+      <CurrencyExchange />
+    </main>
+  );
 }
 
 export default memo(ConverterPage);

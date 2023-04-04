@@ -20,4 +20,9 @@ interface Currency {
   Cur_OfficialRate: number;
 }
 
-export type { NavLink, Contact, Currency };
+interface SelectOption {
+  value: string;
+  label: string;
+}
+
+export type { NavLink, Contact, Currency, SelectOption };
