@@ -33,6 +33,14 @@ footer {
   padding: $paddingPage;
 }
 
+header {
+  border-bottom: 1px solid $linesColor;
+}
+
+footer {
+  border-top: 1px solid $linesColor;
+}
+
 button {
   color: $textButtonColor;
 }

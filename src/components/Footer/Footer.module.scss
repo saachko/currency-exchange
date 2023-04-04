@@ -1,0 +1,23 @@
+@import '../../styles/variables.scss';
+
+.footer {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  svg {
+    color: $textColor;
+    transition: $transition;
+    font-size: $fontSizeButton;
+
+    &:hover {
+      opacity: $hoverOpacity;
+      color: $primaryColorLight;
+    }
+  }
+}
+
+.copyright {
+  font-size: $fontSizeExtraSmall;
+  margin: 0;
+}
