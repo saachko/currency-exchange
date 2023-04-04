@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 function CurrencyPage() {
-  return <div>CurrencyPage</div>;
+  return <main>CurrencyPage</main>;
 }
 
-export default CurrencyPage;
+export default memo(CurrencyPage);
