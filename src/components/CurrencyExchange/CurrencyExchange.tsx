@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React, { useContext, useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { TiArrowSync } from 'react-icons/ti';
@@ -20,6 +21,7 @@ function CurrencyExchange() {
   const [baseCurrency, setBaseCurrency] = useState('');
   const [newQuantity, setNewQuantity] = useState('0');
   const [newCurrency, setNewCurrency] = useState('');
+  const [animatedIcon, setAnimatedIcon] = useState(false);
 
   useEffect(() => {
     if (allCurrencies.length > 0) {
@@ -42,6 +44,18 @@ function CurrencyExchange() {
     return () => document.removeEventListener('keydown', removeMinus);
   }, [baseQuantity]);
 
+  const changeCurrencies = () => {
+    setBaseCurrency(newCurrency);
+    setNewCurrency(baseCurrency);
+    setAnimatedIcon(true);
+  };
+
+  useEffect(() => {
+    if (animatedIcon) {
+      setTimeout(() => setAnimatedIcon(false), 200);
+    }
+  }, [animatedIcon]);
+
   return (
     <div>
       <Form className={styles.form}>
@@ -53,7 +67,13 @@ function CurrencyExchange() {
           currencyCode={baseCurrency}
           setCurrencyCode={setBaseCurrency}
         />
-        <div className={styles.formSection}>
+        <div
+          className={clsx(styles.iconWrapper, {
+            [styles.animatedIcon]: animatedIcon,
+          })}
+          onClick={changeCurrencies}
+          aria-hidden
+        >
           <TiArrowSync />
         </div>
         <FormGroup
