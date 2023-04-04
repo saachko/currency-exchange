@@ -1,0 +1,10 @@
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import './custom.scss';
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
