@@ -1,10 +1,8 @@
-import clsx from 'clsx';
 import React, { useContext, useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { TiArrowSync } from 'react-icons/ti';
-import ReactSelect from 'react-select';
 
-import { currencyBYN, selectStyles } from 'utils/constants';
+import { currencyBYN } from 'utils/constants';
 import { getCurrencyCode, getSelectOptions } from 'utils/functions';
 
 import CurrencyContext from 'contexts/CurrencyContext';
@@ -12,6 +10,7 @@ import CurrencyContext from 'contexts/CurrencyContext';
 import { SelectOption } from 'ts/interfaces';
 
 import styles from './CurrencyExchange.module.scss';
+import FormGroup from './FormGroup';
 
 function CurrencyExchange() {
   const { allCurrencies } = useContext(CurrencyContext);
@@ -43,47 +42,29 @@ function CurrencyExchange() {
     return () => document.removeEventListener('keydown', removeMinus);
   }, [baseQuantity]);
 
-  const getValueFromOption = (value: string) =>
-    value ? currencyList.find((option) => option.value === value) : '';
-
   return (
     <div>
       <Form className={styles.form}>
-        <div className={styles.formSection}>
-          <Form.Control
-            type="number"
-            value={baseQuantity}
-            onChange={({ target }) => setBaseQuantity(target.value)}
-          />
-          <ReactSelect
-            isLoading={isLoading}
-            options={currencyList}
-            value={getValueFromOption(baseCurrency)}
-            onChange={(value) => setNewQuantity((value as SelectOption).value)}
-            styles={selectStyles}
-            className={clsx('react-select-container', styles.select)}
-            classNamePrefix="react-select"
-          />
-        </div>
+        <FormGroup
+          quantity={baseQuantity}
+          setQuantity={setBaseQuantity}
+          isLoading={isLoading}
+          currencyList={currencyList}
+          currencyCode={baseCurrency}
+          setCurrencyCode={setBaseCurrency}
+        />
         <div className={styles.formSection}>
           <TiArrowSync />
         </div>
-        <div className={styles.formSection}>
-          <Form.Control
-            type="number"
-            value={newQuantity}
-            onChange={({ target }) => setNewQuantity(target.value)}
-          />
-          <ReactSelect
-            isLoading={isLoading}
-            options={currencyList}
-            value={getValueFromOption(newCurrency)}
-            onChange={(value) => setNewCurrency((value as SelectOption).value)}
-            styles={selectStyles}
-            className={clsx('react-select-container', styles.select)}
-            classNamePrefix="react-select"
-          />
-        </div>
+        <FormGroup
+          quantity={newQuantity}
+          setQuantity={setNewQuantity}
+          isLoading={isLoading}
+          currencyList={currencyList}
+          currencyCode={newCurrency}
+          setCurrencyCode={setNewCurrency}
+          disabled
+        />
       </Form>
     </div>
   );
