@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useMemo, useState } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 
 import Footer from 'components/Footer/Footer';
@@ -6,6 +6,8 @@ import Header from 'components/Header/Header';
 import Loader from 'components/Loader/Loader';
 
 import getCurrencies from 'utils/api';
+
+import CurrencyContext from 'contexts/CurrencyContext';
 
 import { Currency } from 'ts/interfaces';
 
@@ -31,18 +33,24 @@ function App() {
     })();
   }, []);
 
-  useEffect(() => {
-    console.log(allCurrencies);
-  }, [allCurrencies]);
+  const currencies = useMemo(
+    () => ({
+      allCurrencies,
+      setAllCurrencies,
+    }),
+    [allCurrencies]
+  );
 
   return (
     <>
       <Header />
       <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route index path="converter" element={<ConverterPage />} />
-          <Route path="currency" element={<CurrencyPage />} />
-        </Routes>
+        <CurrencyContext.Provider value={currencies}>
+          <Routes>
+            <Route index path="converter" element={<ConverterPage />} />
+            <Route path="currency" element={<CurrencyPage />} />
+          </Routes>
+        </CurrencyContext.Provider>
       </Suspense>
       <Footer />
     </>

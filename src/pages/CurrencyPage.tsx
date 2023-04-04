@@ -1,6 +1,10 @@
-import React, { memo } from 'react';
+import React, { memo, useContext } from 'react';
+
+import CurrencyContext from 'contexts/CurrencyContext';
 
 function CurrencyPage() {
+  const { allCurrencies } = useContext(CurrencyContext);
+
   return <main>CurrencyPage</main>;
 }
 
