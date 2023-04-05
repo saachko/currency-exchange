@@ -31,6 +31,7 @@ interface TableValues {
   name: string;
   scale: number;
   rate: number;
+  baseName: string;
 }
 
 export type { NavLink, Contact, Currency, SelectOption, TableValues };

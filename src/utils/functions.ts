@@ -68,11 +68,24 @@ const getTableValues = (code: string, allCurrencies: Currency[]) => {
       name: item.Cur_Name,
       scale: item.Cur_Scale,
       rate: item.Cur_OfficialRate,
+      baseName: currencyBYN.Cur_Abbreviation,
     }));
-    return list;
+    return list.filter((item) => `${item.id}` !== code);
   }
-
-  return [];
+  const currentCurrency = allCurrencies.find(
+    (item) => `${item.Cur_ID}` === code
+  ) as Currency;
+  const baseName = currentCurrency.Cur_Abbreviation;
+  const rateToBYN = currentCurrency.Cur_OfficialRate / currentCurrency.Cur_Scale;
+  const list = allCurrencies.map((item) => ({
+    id: item.Cur_ID,
+    abbr: item.Cur_Abbreviation,
+    name: item.Cur_Name,
+    scale: 1,
+    rate: ((rateToBYN * item.Cur_Scale) / item.Cur_OfficialRate).toFixed(4),
+    baseName,
+  }));
+  return list.filter((item) => `${item.id}` !== code);
 };
 
 export { getSelectOptions, getCurrencyCode, exchangeCurrencies, getTableValues };

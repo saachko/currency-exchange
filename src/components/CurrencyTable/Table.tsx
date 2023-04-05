@@ -11,10 +11,9 @@ import styles from './CurrencyTable.module.scss';
 
 interface CurrencyTableProps {
   baseCurrencyCode: string;
-  baseCurrencyName: string;
 }
 
-function CurrencyTable({ baseCurrencyCode, baseCurrencyName }: CurrencyTableProps) {
+function CurrencyTable({ baseCurrencyCode }: CurrencyTableProps) {
   const { allCurrencies } = useContext(CurrencyContext);
   const [tableValues, setTableValues] = useState<TableValues[]>([]);
 
@@ -35,7 +34,7 @@ function CurrencyTable({ baseCurrencyCode, baseCurrencyName }: CurrencyTableProp
             </td>
             <td className={styles.hidden}>({item.name})</td>
             <td>
-              {item.rate} {baseCurrencyName}
+              {item.rate} {item.baseName}
             </td>
           </tr>
         ))}
