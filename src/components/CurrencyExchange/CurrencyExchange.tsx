@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React, { useContext, useEffect, useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { TiArrowSync } from 'react-icons/ti';
 
 import { currencyBYN } from 'utils/constants';
@@ -95,6 +95,11 @@ function CurrencyExchange() {
           setCurrencyCode={setNewCurrency}
           disabled
         />
+        <div className={clsx(styles.formSection, 'mt-3')}>
+          <Button variant="light" onClick={() => setBaseQuantity('0.00')}>
+            Очистить
+          </Button>
+        </div>
       </Form>
     </div>
   );
