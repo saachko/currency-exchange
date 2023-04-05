@@ -32,6 +32,12 @@ function FormGroup({
   const getValueFromOption = (value: string) =>
     value ? currencyList.find((option) => option.value === value) : '';
 
+  const removeZeros = () => {
+    if (!disabled && quantity === '0.00') {
+      setQuantity('');
+    }
+  };
+
   return (
     <div className={styles.formSection}>
       <Form.Control
@@ -39,6 +45,7 @@ function FormGroup({
         value={quantity}
         onChange={({ target }) => setQuantity(target.value)}
         disabled={disabled}
+        onFocus={removeZeros}
       />
       <ReactSelect
         isLoading={isLoading}

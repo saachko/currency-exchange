@@ -4,7 +4,7 @@ import { Form } from 'react-bootstrap';
 import { TiArrowSync } from 'react-icons/ti';
 
 import { currencyBYN } from 'utils/constants';
-import { getCurrencyCode, getSelectOptions } from 'utils/functions';
+import { exchangeCurrencies, getCurrencyCode, getSelectOptions } from 'utils/functions';
 
 import CurrencyContext from 'contexts/CurrencyContext';
 
@@ -16,7 +16,7 @@ import FormGroup from './FormGroup';
 function CurrencyExchange() {
   const { allCurrencies } = useContext(CurrencyContext);
   const [isLoading, setLoading] = useState(true);
-  const [baseQuantity, setBaseQuantity] = useState('0');
+  const [baseQuantity, setBaseQuantity] = useState('0.00');
   const [currencyList, setCurrencyList] = useState<SelectOption[]>([]);
   const [baseCurrency, setBaseCurrency] = useState('');
   const [newQuantity, setNewQuantity] = useState('0');
@@ -55,6 +55,16 @@ function CurrencyExchange() {
       setTimeout(() => setAnimatedIcon(false), 200);
     }
   }, [animatedIcon]);
+
+  useEffect(() => {
+    const exchangedQuantity = exchangeCurrencies(
+      baseQuantity,
+      baseCurrency,
+      newCurrency,
+      allCurrencies
+    );
+    setNewQuantity(exchangedQuantity);
+  }, [baseQuantity, baseCurrency, newCurrency]);
 
   return (
     <div>
