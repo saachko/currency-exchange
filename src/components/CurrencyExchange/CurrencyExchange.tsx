@@ -19,7 +19,7 @@ function CurrencyExchange() {
   const [baseQuantity, setBaseQuantity] = useState('0.00');
   const [currencyList, setCurrencyList] = useState<SelectOption[]>([]);
   const [baseCurrency, setBaseCurrency] = useState('');
-  const [newQuantity, setNewQuantity] = useState('0');
+  const [newQuantity, setNewQuantity] = useState('0.00');
   const [newCurrency, setNewCurrency] = useState('');
   const [animatedIcon, setAnimatedIcon] = useState(false);
 
