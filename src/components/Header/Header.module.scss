@@ -1,0 +1,50 @@
+@import '../../styles/variables.scss';
+
+.title {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  h1 {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerNavbar {
+  display: flex;
+  gap: 16px;
+
+  @media (max-width: 400px) {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+.headerNavLink {
+  text-decoration: none;
+  color: $textColor;
+  transition: $transition;
+  padding: 26px 0 20px;
+
+  @media (max-width: 400px) {
+    padding: 5px 0;
+  }
+
+  &:active,
+  &.active {
+    color: $primaryColor;
+  }
+
+  &:hover {
+    color: $primaryColorLight;
+  }
+}

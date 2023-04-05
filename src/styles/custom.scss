@@ -1,0 +1,31 @@
+@import './variables.scss';
+@import './react-select.scss';
+
+.form-control:focus {
+  border-color: $primaryColor;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem $primaryColorBoxShadow;
+}
+
+.form-control:disabled {
+  border-color: $linesColor;
+  background-color: $backgroundColor;
+}
+
+.form-control {
+  width: 150px;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  @media (max-width: 360px) {
+    width: 290px;
+  }
+}

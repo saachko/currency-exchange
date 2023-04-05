@@ -1,0 +1,55 @@
+@import '../../styles/variables.scss';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.formSection {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  @media (max-width: 360px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.iconWrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50px;
+
+  svg {
+    font-size: 50px;
+    color: $primaryColorLight;
+    transition: $transition;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+      opacity: $hoverOpacity;
+    }
+  }
+}
+
+.animatedIcon {
+  animation: rotate 0.2s;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+.select {
+  width: 290px;
+}

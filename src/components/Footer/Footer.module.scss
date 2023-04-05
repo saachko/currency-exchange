@@ -1,0 +1,35 @@
+@import '../../styles/variables.scss';
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  svg {
+    color: $textColor;
+    transition: $transition;
+    font-size: $fontSizeButton;
+
+    &:hover {
+      opacity: $hoverOpacity;
+      color: $primaryColorLight;
+    }
+  }
+}
+
+.note {
+  margin: 0;
+  font-size: $fontSizeExtraSmall;
+  color: $textColorLight;
+  text-align: center;
+}
+
+.copyright {
+  font-size: $fontSizeExtraSmall;
+  margin: 0;
+}

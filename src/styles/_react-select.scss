@@ -1,0 +1,18 @@
+@import './variables.scss';
+
+.react-select-container {
+  .react-select__control {
+    outline: none;
+    border-radius: 7px;
+    color: $textColor;
+    transition: $transition;
+
+    .react-select__value-container {
+      border-radius: 7px 0 0 7px;
+    }
+
+    .react-select__indicators {
+      border-radius: 0 7px 7px 0;
+    }
+  }
+}
