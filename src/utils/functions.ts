@@ -60,4 +60,19 @@ const exchangeCurrencies = (
   return '';
 };
 
-export { getSelectOptions, getCurrencyCode, exchangeCurrencies };
+const getTableValues = (code: string, allCurrencies: Currency[]) => {
+  if (code === `${currencyBYN.Cur_ID}`) {
+    const list = allCurrencies.map((item) => ({
+      id: item.Cur_ID,
+      abbr: item.Cur_Abbreviation,
+      name: item.Cur_Name,
+      scale: item.Cur_Scale,
+      rate: item.Cur_OfficialRate,
+    }));
+    return list;
+  }
+
+  return [];
+};
+
+export { getSelectOptions, getCurrencyCode, exchangeCurrencies, getTableValues };

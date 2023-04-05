@@ -25,4 +25,12 @@ interface SelectOption {
   label: string;
 }
 
-export type { NavLink, Contact, Currency, SelectOption };
+interface TableValues {
+  id: number;
+  abbr: string;
+  name: string;
+  scale: number;
+  rate: number;
+}
+
+export type { NavLink, Contact, Currency, SelectOption, TableValues };

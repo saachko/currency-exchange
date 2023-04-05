@@ -39,6 +39,10 @@ function BaseCurrencySelector({
 
   useEffect(() => {
     localStorage.setItem('currencyCode', currencyCode);
+    const currency = allCurrencies.find((item) => `${item.Cur_ID}` === currencyCode);
+    if (currency) {
+      localStorage.setItem('currencyName', currency.Cur_Abbreviation);
+    }
   }, [currencyCode]);
 
   return (

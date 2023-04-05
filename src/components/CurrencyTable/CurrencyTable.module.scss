@@ -31,3 +31,19 @@
     width: 290px;
   }
 }
+
+.note {
+  font-size: $fontSizeSmall;
+  color: $textColorLight;
+}
+
+.table {
+  color: $textColor;
+  width: calc(100vw - 30px);
+}
+
+.hidden {
+  @media (max-width: 390px) {
+    display: none;
+  }
+}
