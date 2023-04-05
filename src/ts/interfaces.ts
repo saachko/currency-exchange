@@ -30,7 +30,7 @@ interface TableValues {
   abbr: string;
   name: string;
   scale: number;
-  rate: number;
+  rate: string;
   baseName: string;
 }
 

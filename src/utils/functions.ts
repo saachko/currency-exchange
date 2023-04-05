@@ -67,7 +67,7 @@ const getTableValues = (code: string, allCurrencies: Currency[]) => {
       abbr: item.Cur_Abbreviation,
       name: item.Cur_Name,
       scale: item.Cur_Scale,
-      rate: item.Cur_OfficialRate,
+      rate: item.Cur_OfficialRate.toFixed(4),
       baseName: currencyBYN.Cur_Abbreviation,
     }));
     return list.filter((item) => `${item.id}` !== code);
