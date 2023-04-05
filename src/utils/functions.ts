@@ -76,13 +76,13 @@ const getTableValues = (code: string, allCurrencies: Currency[]) => {
     (item) => `${item.Cur_ID}` === code
   ) as Currency;
   const baseName = currentCurrency.Cur_Abbreviation;
-  const rateToBYN = currentCurrency.Cur_OfficialRate / currentCurrency.Cur_Scale;
+  const rateToBYN = currentCurrency.Cur_Scale / currentCurrency.Cur_OfficialRate;
   const list = allCurrencies.map((item) => ({
     id: item.Cur_ID,
     abbr: item.Cur_Abbreviation,
     name: item.Cur_Name,
     scale: 1,
-    rate: ((rateToBYN * item.Cur_Scale) / item.Cur_OfficialRate).toFixed(4),
+    rate: ((rateToBYN * item.Cur_OfficialRate) / item.Cur_Scale).toFixed(4),
     baseName,
   }));
   return list.filter((item) => `${item.id}` !== code);
