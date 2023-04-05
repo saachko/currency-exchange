@@ -1,11 +1,13 @@
-import React, { memo, useContext } from 'react';
+import React, { memo } from 'react';
 
-import CurrencyContext from 'contexts/CurrencyContext';
+import CurrencyTable from 'components/CurrencyTable/CurrencyTable';
 
 function CurrencyPage() {
-  const { allCurrencies } = useContext(CurrencyContext);
-
-  return <main>CurrencyPage</main>;
+  return (
+    <main>
+      <CurrencyTable />
+    </main>
+  );
 }
 
 export default memo(CurrencyPage);

@@ -1,0 +1,33 @@
+@import '../../styles/variables.scss';
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 16px;
+  min-height: calc(100vh - 275px);
+}
+
+.formGroup {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  label {
+    margin-top: 5px;
+  }
+}
+
+.select {
+  width: 400px;
+
+  @media (max-width: 450px) {
+    width: 290px;
+  }
+}
